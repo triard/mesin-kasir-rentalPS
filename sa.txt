@@ -1,0 +1,361 @@
+import java.util.Scanner;
+
+class rentalps {
+    static Scanner sc = new Scanner(System.in);
+    static Scanner scan = new Scanner(System.in);
+    static int durasi, diskon, total, akhir = 0, bayar, pembayaran, banyak, tot, tot1, tal, pilihan1, pilihan2,
+            air = 2000, tea = 3000, taro = 1000, fries = 1000, citato = 1000, end;
+    static String nober, jawaban, ps, kursi;
+
+    public static void main(String[] args) {
+        do {
+            Login();
+            tampilkanMenu();
+            pilihanmenu(pilihMenu());
+        } while (Ulangi());
+    }
+
+    public static void Login() {
+        System.out.println("|-------------------------------------------------------|");
+        System.out.println("|\tSELAMAT DATANG DI RENTAL PS KROMO DIRJO         |");
+        System.out.println("|\t    jl. Senggani No 24a Kota Malang             |");
+        System.out.println("|\t\t  Phone: 085606313076                   |");
+        System.out.println("|-------------------------------------------------------|");
+        System.out.print("\t->Masukan nomer members(bukan member[0]) : ");
+        nober = sc.next();
+    }
+
+    public static void tampilkanMenu() {
+        System.out.println("|\t\t|=======================|               |");
+        System.out.println("|\t\t|  PILIH MENU           |               |");
+        System.out.println("|\t\t|  1. jenis PS          |               |");
+        System.out.println("|\t\t|  2. Makanan           |               |");
+        System.out.println("|\t\t|=======================|               |");
+    }
+
+    public static int pilihMenu() {
+        System.out.print("\t-> Masukkan Pilihan anda\t\t: ");
+        int pilihan = sc.nextInt();
+        return pilihan;
+    }
+
+    public static void pilihanmenu(int pilihan) {
+        if (pilihan == 1) {
+            tampilkanMenups();
+        } else if (pilihan == 2) {
+            tampilkanmenuMakanan();
+        } else {
+            System.out.println("Inputan salah!");
+        }
+    }
+
+    public static void tampilkanMenups() {
+
+        System.out.println("|================== jenis playstation ==================|");
+        System.out.println("|\t\t    1. PlayStation 2                    |");
+        System.out.println("|\t\t    2. PlayStation 3                    |");
+        System.out.println("|\t\t    3. PlayStation 4                    |");
+        System.out.println("|=======================================================|");
+        System.out.print("\t-> Masukan pilihan anda\t\t\t: ");
+        ps = sc.next();
+
+        switch (ps) {
+
+        case ("1"):
+            ps2();
+            break;
+
+        case ("2"):
+            ps3();
+            break;
+
+        case ("3"):
+            ps4();
+            break;
+
+        default:
+            System.out.println("Maaf jenis PS yang anda inginkan tidak ada");
+        }
+    }
+
+    static void diskon10() {
+        diskon = total * 10 / 100;
+        System.out.println("->\tDiskon\t: " + diskon);
+        akhir = total - diskon;
+        System.out.println("->\tTotal\t: " + akhir);
+        System.out.println("--------------------------------------------------");
+    }
+
+    static void diskon20() {
+        diskon = total * 20 / 100;
+        System.out.println("->\tDiskon\t: " + diskon);
+        akhir = total - diskon;
+        System.out.println("\tTotal\t: " + akhir);
+        System.out.println("--------------------------------------------------");
+    }
+
+    public static void ps2() {
+
+        System.out.println("|-------------------------------------------------------|");
+        System.out.println("|\t\tBiaya per jam Rp 2000                   |");
+        int bayarps2 = 2000;
+        System.out.print("\t\tDurasi waktu (jam)\t\t: ");
+        durasi = sc.nextInt();
+        total = durasi * bayarps2;
+        System.out.println("|\t\tPembayaran PS\t\t\t:Rp" + total + "|");
+
+        if ((nober.equals("13")) && (durasi >= 5) && (durasi <= 10)) {
+            diskon10();
+        }
+
+        else if ((nober.equals("13")) && (durasi > 10)) {
+            diskon20();
+        } else {
+            akhir = total + akhir;
+        }
+        pilihtempatduduk();
+    }
+
+    public static void ps3() {
+        System.out.println("|-------------------------------------------------------|");
+        System.out.println("|\t\tBiaya per jam Rp 4000                   |");
+        int bayarps3 = 4000;
+        System.out.print("\t\tDurasi waktu (jam)\t\t: ");
+        durasi = sc.nextInt();
+        total = durasi * bayarps3;
+        System.out.println("|\t\tPembayaran PS\t\t\t:Rp" + total + "|");
+
+        if ((nober.equals("13")) && (durasi >= 5) && (durasi < 10)) {
+            diskon10();
+        }
+
+        else if ((nober.equals("13")) && (durasi > 10)) {
+            diskon20();
+        } else {
+            akhir = total + akhir;
+        }
+        pilihtempatduduk();
+    }
+
+    public static void ps4() {
+
+        System.out.println("|-------------------------------------------------------|");
+        System.out.println("|\t\tBiaya per jam Rp 6000                   |");
+        int bayarps4 = 6000;
+        System.out.print("\t\tDurasi waktu (jam)\t\t: ");
+        durasi = sc.nextInt();
+        total = durasi * bayarps4;
+        System.out.println("|\t\tPembayaran PS\t\t\t:Rp" + total + "|");
+
+        if ((nober.equals("13")) && (durasi >= 5) && (durasi < 10)) {
+            diskon10();
+
+        } else if ((nober.equals("13")) && (durasi >= 10)) {
+            diskon20();
+        } else {
+            akhir = total + akhir;
+        }
+        pilihtempatduduk();
+    }
+
+    public static void pilihtempatduduk() {
+        System.out.println("|-------------------------------------------------------|");
+        String[][] nilai = new String[3][5];
+
+        nilai[0][0] = "PS2 TV1";
+        nilai[0][1] = "PS2 TV2";
+        nilai[0][2] = "PS2 TV3";
+        nilai[0][3] = "PS2 TV4";
+        nilai[0][4] = "PS2 TV5";
+        nilai[1][0] = "PS3 TV1";
+        nilai[1][1] = "PS3 TV2";
+        nilai[1][2] = "PS3 TV3";
+        nilai[1][3] = "PS3 TV4";
+        nilai[1][4] = "PS3 TV5";
+        nilai[2][0] = "PS4 TV1";
+        nilai[2][1] = "PS4 TV2";
+        nilai[2][2] = "PS4 TV3";
+        nilai[2][3] = "PS4 TV4";
+        nilai[2][4] = "PS4 TV5";
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 5; j++) {
+                System.out.print("   |" + nilai[i][j] + "|");
+            }
+            System.out.println("");
+        }
+        System.out.println("|------------------ ----------------------------------------|");
+        System.out.print("\t\tMasukan pilihan kursi\t\t:");
+        kursi = sc.next();
+        System.out.println("|-----------------------------------------------------------|");
+
+        System.out.print("\t\t->Ingin beli cemilan\t: ");
+        jawaban = sc.next();
+        if (jawaban.equals("y")) {
+            tampilkanmenuMakanan();
+        } else {
+            pembayaran();
+        }
+    }
+
+    public static void tampilkanmenuMakanan() {
+        System.out.println("|-------------------------------------------------------|");
+        System.out.println("\t\tDaftar Makanan Ringan:");
+        System.out.println("|-------------------------------------------------------|");
+        String[] makanan = { "1. Air Mineral\tRp 2000", "2. fresh tea\tRp 3000", "3. Taro\t\tRp 1000",
+                "4. French fries\tRp 1000", "5. Chitato\tRp 1000" };
+        for (int i = 0; i < makanan.length; i++) {
+            System.out.println("\tDaftar Snack: " + makanan[i]);
+        }
+
+        System.out.print("\t\tPilihan pertama makanan\t\t : ");
+        pilihan1 = sc.nextInt();
+
+        if (pilihan1 == 1) {
+            System.out.print("\t\tBanyaknya barang pilihan pertama : ");
+            banyak = sc.nextInt();
+            tot = air * banyak;
+            System.out.println("|\t\tTotal\t\t\t\t : Rp" + tot+"|");
+
+        } else if (pilihan1 == 2) {
+            System.out.print("\t\tBanyaknya barang pilihan pertama : ");
+            banyak = sc.nextInt();
+            tot = tea * banyak;
+            System.out.println("|\t\tTotal\t\t\t\t : Rp" + tot+"|");
+
+        } else if (pilihan1 == 3) {
+            System.out.print("\t\tBanyaknya barang pilihan pertama : ");
+            banyak = sc.nextInt();
+            tot = taro * banyak;
+            System.out.println("|\t\tTotal\t\t\t\t : Rp" + tot + "|");
+        } else if (pilihan1 == 4) {
+            System.out.print("\t\tBanyaknya barang pilihan pertama : ");
+            banyak = sc.nextInt();
+            tot = fries * banyak;
+            System.out.println("|\t\tTotal\t\t\t\t : Rp" + tot + "|");
+        } else if (pilihan1 == 5) {
+            System.out.print("\t\tBanyaknya barang pilihan pertama : ");
+            banyak = sc.nextInt();
+            tot = citato * banyak;
+            System.out.println("|\t\tTotal\t\t\t\t : Rp" + tot + "|");
+        } else {
+
+        }
+
+        System.out.print("\t\tPilihan pertama makanan\t\t : ");
+        pilihan2 = sc.nextInt();
+        if (pilihan2 == 1) {
+            System.out.print("\t\tBanyaknya barang pilihan kedua   : ");
+            banyak = sc.nextInt();
+            tot1 = air * banyak;
+            System.out.println("|\t\tTotal\t\t\t\t : Rp" + tot + "|");
+
+        } else if (pilihan2 == 2) {
+            System.out.print("\t\tBanyaknya barang pilihan kedua   : ");
+            banyak = sc.nextInt();
+            tot1 = tea * banyak;
+            System.out.println("|\t\tTotal\t\t\t\t : Rp" + tot + "|");
+        } else if (pilihan2 == 3) {
+            System.out.print("\t\tBanyaknya barang pilihan kedua   : ");
+            banyak = sc.nextInt();
+            tot1 = taro * banyak;
+            System.out.println("|\t\tTotal\t\t\t\t : Rp" + tot + "|");
+        } else if (pilihan2 == 4) {
+            System.out.print("\t\tBanyaknya barang pilihan kedua   : ");
+            banyak = sc.nextInt();
+            tot1 = fries * banyak;
+            System.out.println("|\t\tTotal\t\t\t\t : Rp" + tot + "|");
+        } else if (pilihan2 == 5) {
+            System.out.print("\t\tBanyaknya barang pilihan kedua   : ");
+            banyak = sc.nextInt();
+            tot1 = citato * banyak;
+            System.out.println("|\t\tTotal\t\t\t\t : Rp" + tot + "|");
+        } else {
+        }
+        tal = tot + tot1;
+        System.out.println("|\t\tTotal makanan yang dibeli\t : Rp" + tal+"|");
+        pembayaran();
+    }
+
+    public static void pembayaran() {
+        System.out.println("|--------------------------------------------------------------|");
+        end = tal + akhir;
+        System.out.println("|\t\tTotal akhir\t\t\t : Rp"+end+"\t|");
+        System.out.print("\t\tMasukan uang pembayaran\t\t : Rp ");
+        int pembayaran = sc.nextInt();
+
+        if ((pembayaran >= end) && (pilihan2 == 1) || (pilihan2 == 2)|| (pilihan2 == 3)|| (pilihan2 ==4 )||(pilihan2 == 5)) {
+            bayar = pembayaran - end;
+            System.out.println("kembalian Rp " + bayar);
+        // } else if ((pembayaran >= akhir + tal) && (pilihan1 == 1 && pilihan2 == 2)
+        //         || (pilihan1 == 2 && pilihan2 == 1)) {
+        //     bayar = pembayaran - (akhir + tal);
+        //     System.out.println("kembalian Rp " + bayar);
+        // } else if ((pembayaran >= akhir + tal) && (pilihan1 == 1 && pilihan2 == 3)
+        //         || (pilihan1 == 3 && pilihan2 == 1)) {
+        //     bayar = pembayaran - (akhir + tal);
+        //     System.out.println("kembalian Rp " + bayar);
+        // } else if ((pembayaran >= akhir + tal) && (pilihan1 == 1 && pilihan2 == 4)
+        //         || (pilihan1 == 4 && pilihan2 == 1)) {
+        //     bayar = pembayaran - (akhir + tal);
+        //     System.out.println("kembalian Rp " + bayar);
+        // } else if ((pembayaran >= akhir + tal) && (pilihan1 == 1 && pilihan2 == 5)
+        //         || (pilihan1 == 5 && pilihan2 == 1)) {
+        //     bayar = pembayaran - (akhir + tal);
+        //     System.out.println("kembalian Rp " + bayar);
+        // } else if ((pembayaran >= akhir + tal) && (pilihan1 == 2 && pilihan2 == 2)
+        //         || (pilihan1 == 2 && pilihan2 == 2)) {
+        //     bayar = pembayaran - (akhir + tal);
+        //     System.out.println("kembalian Rp " + bayar);
+        // } else if ((pembayaran >= akhir + tal) && (pilihan1 == 2 && pilihan2 == 3)
+        //         || (pilihan1 == 3 && pilihan2 == 2)) {
+        //     bayar = pembayaran - (akhir + tal);
+        //     System.out.println("kembalian Rp " + bayar);
+        // } else if ((pembayaran >= akhir + tal) && (pilihan1 == 2 && pilihan2 == 4)
+        //         || (pilihan1 == 4 && pilihan2 == 2)) {
+        //     bayar = pembayaran - (akhir + tal);
+        //     System.out.println("kembalian Rp " + bayar);
+        // } else if ((pembayaran >= akhir + tal) && (pilihan1 == 2 && pilihan2 == 5)
+        //         || (pilihan1 == 5 && pilihan2 == 2)) {
+        //     bayar = pembayaran - (akhir + tal);
+        //     System.out.println("kembalian Rp " + bayar);
+        // } else if ((pembayaran >= akhir + tal) && (pilihan1 == 3 && pilihan2 == 3)
+        //         || (pilihan1 == 3 && pilihan2 == 3)) {
+        //     bayar = pembayaran - (akhir + tal);
+        //     System.out.println("kembalian Rp " + bayar);
+        // } else if ((pembayaran >= akhir + tal) && (pilihan1 == 3 && pilihan2 == 4)
+        //         || (pilihan1 == 4 && pilihan2 == 3)) {
+        //     bayar = pembayaran - (akhir + tal);
+        //     System.out.println("kembalian Rp " + bayar);
+        // } else if ((pembayaran >= akhir + tal) && (pilihan1 == 3 && pilihan2 == 5)
+        //         || (pilihan1 == 5 && pilihan2 == 3)) {
+        //     bayar = pembayaran - (akhir + tal);
+        //     System.out.println("kembalian Rp " + bayar);
+        // } else if ((pembayaran >= akhir + tal) && (pilihan1 == 4 && pilihan2 == 4)
+        //         || (pilihan1 == 4 && pilihan2 == 4)) {
+        //     bayar = pembayaran - (akhir + tal);
+        //     System.out.println("kembalian Rp " + bayar);
+        // } else if ((pembayaran >= akhir + tal) && (pilihan1 == 4 && pilihan2 == 5)
+        //         || (pilihan1 == 5 && pilihan2 == 4)) {
+        //     bayar = pembayaran - (akhir + tal);
+        //     System.out.println("kembalian Rp " + bayar);
+        // } else if ((pembayaran >= akhir + tal) && (pilihan1 == 5 && pilihan2 == 5)
+        //         || (pilihan1 == 5 && pilihan2 == 5)) {
+        //     bayar = pembayaran - (akhir + tal);
+        //     System.out.println("kembalian Rp " + bayar);
+        } else if (akhir <= pembayaran) {
+            bayar = pembayaran - total;
+            System.out.println("|\t\tUang kembalian anda sebesar\tRp " + bayar);
+        } else {
+            System.out.println("|\tmaaf uang anda kurang, silahkan masukan uang lagi|");
+            pembayaran();
+        }
+
+    }
+
+    public static boolean Ulangi() {
+        System.out.print("\t\tUlangi (y/n) ?\t: ");
+        char ulangi = sc.next().charAt(0);
+        return ulangi == 'y';
+    }
+}
